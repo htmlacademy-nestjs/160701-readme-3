@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
-* Студент: [Дмитрий Щеклеин](https://up.htmlacademy.ru/nodejs-2/3/user/160701).
-* Наставник: `Неизвестно`.
+- Студент: [Дмитрий Щеклеин](https://up.htmlacademy.ru/nodejs-2/3/user/160701).
+- Наставник: [Олег Зубов](https://htmlacademy.ru/profile/id42701).
 
 ---
 
