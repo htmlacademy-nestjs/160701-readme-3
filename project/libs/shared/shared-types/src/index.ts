@@ -1,1 +1,2 @@
-// export * from './lib/shared-shared-types';
+export * from './lib/user-role.enum';
+export * from './lib/user.interface';
