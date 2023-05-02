@@ -15,7 +15,9 @@ export class BlogUserEntity implements User {
   constructor(blogUser: User) {
     this.fillEntity(blogUser);
   }
-
+  public toObject() {
+    return { ...this };
+  }
   public fillEntity(blogUser: User) {
     this._id = blogUser._id;
     this.avatar = blogUser.avatar;
