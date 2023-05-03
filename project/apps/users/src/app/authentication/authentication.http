@@ -1,0 +1,40 @@
+# Пользователи
+@hostname = http://localhost
+@port = 3008
+@host = {{hostname}}:{{port}}
+@prefix = api
+@parentPath = auth
+@contentType = application/json
+@userId = 7aef6925-4fe5-4057-b5cc-cc7cf214df05
+
+@token = eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtla3NAb3Zlcmxvb2submV0IiwiaWQiOiI2NDQzODM3ZWZjZDkzYWNhY2ZkZTMxYWMiLCJpYXQiOjE2ODI1ODA2NDMsImV4cCI6MTY4Mjc1MzQ0M30.cI6T9c_PVfxOA_3JpGh1OeAEYEsrE1xCJlVMZCzIBMQ
+
+# Create a new user
+POST {{host}}/{{prefix}}/{{parentPath}}/register HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "email": "user@notfound.local",
+  "dateBirth": "2012-02-22",
+  "firstname": "Keks",
+  "lastname": "Smith",
+  "password": "123456"
+}
+
+###
+
+# Get user by ID
+GET {{host}}/{{prefix}}/{{parentPath}}/{{userId}} HTTP/1.1
+
+###
+
+# Login user by email and password
+POST {{host}}/{{prefix}}/{{parentPath}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "user@notfound.local",
+  "password": "123456"
+}
+
+###
