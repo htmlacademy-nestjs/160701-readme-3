@@ -15,11 +15,12 @@ async function bootstrap() {
     .setDescription('Users service API')
     .setVersion('1.0')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('spec', app, document);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('spec', app, document);
   const port = process.env.PORT || 3000;
   await app.listen(port);
   Logger.log(
