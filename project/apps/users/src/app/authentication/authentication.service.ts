@@ -5,16 +5,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { BlogUserMemoryRepository } from '../blog-user/blog-user.memory.repository';
-import { CreateUserDto } from './dto/create-user.dto.js';
+import { CreateUserDto } from './dto/create-user.dto';
 import { UserRole } from '@project/shared/shared-types';
 import dayjs from 'dayjs';
 import {
   AUTH_USER_EXISTS,
   AUTH_USER_NOT_FOUND,
   AUTH_USER_PASSWORD_WRONG,
-} from './authentication.constant.js';
+} from './authentication.constant';
 import { BlogUserEntity } from '../blog-user/blog-user.entity';
-import { LoginUserDto } from './dto/login-user.dto.js';
+import { LoginUserDto } from './dto/login-user.dto';
 
 @Injectable()
 export class AuthenticationService {

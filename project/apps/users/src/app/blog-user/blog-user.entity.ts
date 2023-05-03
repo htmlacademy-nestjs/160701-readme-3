@@ -1,6 +1,6 @@
 import { User, UserRole } from '@project/shared/shared-types';
 import { compare, genSalt, hash } from 'bcrypt';
-import { SALT_ROUNDS } from './blog-user.constant.js';
+import { SALT_ROUNDS } from './blog-user.constant';
 
 export class BlogUserEntity implements User {
   public _id?: string;
