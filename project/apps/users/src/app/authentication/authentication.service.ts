@@ -13,10 +13,7 @@ import {
   AUTH_USER_NOT_FOUND,
   AUTH_USER_PASSWORD_WRONG,
 } from './authentication.constant.js';
-import {
-  BlogUserEntity,
-  BlogUserEntity,
-} from '../blog-user/blog-user.entity.js';
+import { BlogUserEntity } from '../blog-user/blog-user.entity';
 import { LoginUserDto } from './dto/login-user.dto.js';
 
 @Injectable()
