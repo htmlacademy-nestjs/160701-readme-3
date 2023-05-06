@@ -10,3 +10,5 @@ export interface User {
   passwordHash: string;
   role: UserRole;
 }
+
+export { UserRole };
