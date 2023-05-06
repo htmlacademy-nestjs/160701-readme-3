@@ -4,7 +4,6 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { BlogUserMemoryRepository } from '../blog-user/blog-user.memory.repository';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserRole } from '@project/shared/shared-types';
 import dayjs from 'dayjs';
@@ -15,10 +14,11 @@ import {
 } from './authentication.constant';
 import { BlogUserEntity } from '../blog-user/blog-user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
+import { BlogUserRepository } from '../blog-user/blog-user.repository';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private readonly blogUserRepository: BlogUserMemoryRepository) {}
+  constructor(private readonly blogUserRepository: BlogUserRepository) {}
 
   public async register(dto: CreateUserDto) {
     const { email, firstName, lastName, password, dateBirth } = dto;
