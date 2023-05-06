@@ -1,7 +1,5 @@
 import { registerAs } from '@nestjs/config';
-import { plainToInstance } from 'class-transformer';
-import { DatabaseEnvironment } from './database-environments';
-import { validateSync } from 'class-validator';
+import * as Joi from 'joi';
 
 const DEFAULT_MONGO_PORT = 27017;
 
@@ -24,16 +22,22 @@ export default registerAs('db', (): DbConfig => {
     authBase: process.env.MONGO_AUTH_BASE,
   };
 
-  const databaseEnvironment = plainToInstance(DatabaseEnvironment, config, {
-    enableImplicitConversion: true,
+  const validationSchema = Joi.object<DbConfig>({
+    host: Joi.string().hostname().required(),
+    port: Joi.number().port().default(DEFAULT_MONGO_PORT),
+    name: Joi.string().required(),
+    user: Joi.string().required(),
+    password: Joi.string().required(),
+    authBase: Joi.string().required(),
   });
 
-  const errors = validateSync(databaseEnvironment, {
-    skipMissingProperties: false,
-  });
+  const { error } = validationSchema.validate(config, { abortEarly: true });
 
-  if (errors.length > 0) {
-    throw new Error(errors.toString());
+  if (error) {
+    throw new Error(
+      `[DB Config]: Environments validation failed. Please check .env file.
+      Error message: ${error.message}`
+    );
   }
 
   return config;
