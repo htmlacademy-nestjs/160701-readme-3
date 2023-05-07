@@ -14,27 +14,27 @@ export class BlogPostEntity implements Entity<BlogPostEntity>, Post {
   public userId: string;
   public comments: Comment[];
   public categories: Category[];
-  public type: PostType;
+  // public type: PostType;
 
   constructor(post: Post) {
     this.fillEntity(post);
   }
 
-  public fillEntity({ content, userId, categories, type }: Post): void {
+  public fillEntity({ content, userId, categories }: Post): void {
     this.content = content;
     this.createdAt = new Date();
     this.publishAt = new Date();
     this.userId = userId;
     this.comments = [];
     this.categories = [...categories];
-    this.type = type;
+    // this.type = type;
   }
 
   public toObject(): BlogPostEntity {
     return {
       ...this,
-      categories: this.categories.map(({ id }) => ({ categoryId: id })),
-      comments: this.categories.map(({ id }) => ({ categoryId: id })),
+      categories: this.categories.map(({ categoryId }) => ({ categoryId })),
+      comments: this.categories.map(({ categoryId }) => ({ categoryId })),
     };
   }
 }

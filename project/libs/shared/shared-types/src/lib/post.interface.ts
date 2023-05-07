@@ -5,7 +5,7 @@ import { Category } from './category.interface';
 export interface Post {
   _id?: string;
   tag?: string[];
-  type: PostType;
+  // type: PostType;
   createdAt?: Date;
   publishAt?: Date;
   comments: Comment[];
