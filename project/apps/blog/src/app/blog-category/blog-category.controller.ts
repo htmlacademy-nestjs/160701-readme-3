@@ -13,10 +13,11 @@ import { BlogCategoryService } from './blog-category.service';
 import { CategoryRdo } from './rdo/category.rdo';
 import { fillObject } from '@project/util/util-core';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { CreateCategoryDto } from './dto/create-category.dto';
 
 @Controller('categories')
 export class BlogCategoryController {
-  contstructor(private readonly blogCategoryService: BlogCategoryService) {}
+  constructor(private readonly blogCategoryService: BlogCategoryService) {}
 
   @Get('/:id')
   public async show(@Param('id') id: string) {
@@ -29,26 +30,26 @@ export class BlogCategoryController {
   }
 
   @Get('/')
-  async index() {
+  public async index() {
     const categories = await this.blogCategoryService.getCategories();
     return fillObject(CategoryRdo, categories);
   }
 
   @Post('/')
-  async create(@Body() dto: CreateCategoryDto) {
+  public async create(@Body() dto: CreateCategoryDto) {
     const newCategory = await this.blogCategoryService.createCategory(dto);
     return fillObject(CategoryRdo, newCategory);
   }
 
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async destroy(@Param('id') id: string) {
+  public async destroy(@Param('id') id: string) {
     const categoryId = parseInt(id, 10);
     this.blogCategoryService.deleteCategory(categoryId);
   }
 
   @Patch('/:id')
-  async update(@Param('id') id: string, @Body() dto: UpdateCategoryDto) {
+  public async update(@Param('id') id: string, @Body() dto: UpdateCategoryDto) {
     const categoryId = parseInt(id, 10);
     const updatedCategory = await this.blogCategoryService.updateCategory(
       categoryId,
