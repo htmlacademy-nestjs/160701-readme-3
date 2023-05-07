@@ -1,5 +1,6 @@
 import { PostType } from './post-type.enum.js';
 import { Comment } from './comment.interface';
+import { Category } from './category.interface';
 
 export interface Post {
   _id?: string;
@@ -10,4 +11,5 @@ export interface Post {
   comments: Comment[];
   userId: string;
   content: string;
+  categories: Category[];
 }
