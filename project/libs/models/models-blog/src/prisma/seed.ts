@@ -4,10 +4,10 @@ const prisma = new PrismaClient();
 
 async function fillDb() {
   await prisma.category.upsert({
-    where: { categoryId: 1 },
+    where: { categoryId: 2 },
     update: {},
     create: {
-      title: 'Текст',
+      title: 'Текст 2',
       posts: {
         create: [
           {
@@ -15,6 +15,14 @@ async function fillDb() {
             userId: '2',
             content: 'lorem5',
             description: 'lorem10',
+            comments: {
+              create: [
+                {
+                  message: 'lorem1111',
+                  userId: '1',
+                },
+              ],
+            },
           },
         ],
       },
