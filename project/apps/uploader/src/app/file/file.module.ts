@@ -7,7 +7,6 @@ import { FileRepository } from './file.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FileModel, FileSchema } from './file.model';
 
-const SERVE_ROOT = '/static';
 @Module({
   imports: [
     ServeStaticModule.forRootAsync({
@@ -16,11 +15,12 @@ const SERVE_ROOT = '/static';
         const rootPath = configService.get<string>(
           'application.uploadDirectory'
         );
+        const serveRoot = configService.get<string>('application.serveRoot');
 
         return [
           {
             rootPath,
-            serveRoot: SERVE_ROOT,
+            serveRoot,
             /*
             * `etag` — включает или отключает отправку заголовка ETag в ответ на запросы
             к статическим файлам. Значение по умолчанию - `true`.
