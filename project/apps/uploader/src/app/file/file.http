@@ -1,0 +1,23 @@
+# Пользователи
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@prefix = api
+@parentPath = files
+@contentType = application/json
+@userId = 64568b7912955db48eb0f9d7
+
+@token = eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtla3NAb3Zlcmxvb2submV0IiwiaWQiOiI2NDQzODM3ZWZjZDkzYWNhY2ZkZTMxYWMiLCJpYXQiOjE2ODI1ODA2NDMsImV4cCI6MTY4Mjc1MzQ0M30.cI6T9c_PVfxOA_3JpGh1OeAEYEsrE1xCJlVMZCzIBMQ
+
+
+
+# Upload some file
+POST {{host}}/{{prefix}}/{{parentPath}}/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="file1.http"
+
+< ./file.http
+--boundary--
+###
