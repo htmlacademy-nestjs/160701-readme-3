@@ -5,9 +5,8 @@
 @prefix = api
 @parentPath = files
 @contentType = application/json
-@userId = 64568b7912955db48eb0f9d7
+@fileId = 64591e078a7c94fc4822636e
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtla3NAb3Zlcmxvb2submV0IiwiaWQiOiI2NDQzODM3ZWZjZDkzYWNhY2ZkZTMxYWMiLCJpYXQiOjE2ODI1ODA2NDMsImV4cCI6MTY4Mjc1MzQ0M30.cI6T9c_PVfxOA_3JpGh1OeAEYEsrE1xCJlVMZCzIBMQ
 
 
 
@@ -20,4 +19,12 @@ Content-Disposition: form-data; name="file"; filename="file1.http"
 
 < ./file.http
 --boundary--
+###
+
+
+###
+
+# Get file by ID
+GET {{host}}/{{prefix}}/{{parentPath}}/{{fileId}} HTTP/1.1
+
 ###
