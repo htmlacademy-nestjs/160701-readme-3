@@ -14,7 +14,12 @@ import { fillObject } from '@project/util/util-core';
 import { UserRdo } from './rdo/user.rdo';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { LoginUserDto } from './dto/login-user.dto';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiResponse,
+  ApiTags,
+  ApiOperation,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { MongoidValidationPipe } from '@project/shared/shared-pipes';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
@@ -28,6 +33,7 @@ export class AuthenticationController {
     status: HttpStatus.CREATED,
     description: 'The new user has been successfully created.',
   })
+  @ApiOperation({ summary: 'Регистрация пользователя' })
   @Post('register')
   public async create(@Body() dto: CreateUserDto) {
     const newUser = await this.authService.register(dto);
@@ -45,6 +51,7 @@ export class AuthenticationController {
     description: 'Password or Login is wrong.',
   })
   @Post('login')
+  @ApiOperation({ summary: 'Авторизация пользователя' })
   @HttpCode(HttpStatus.OK)
   public async login(@Body() dto: LoginUserDto) {
     const verifiedUser = await this.authService.verifyUser(dto);
@@ -59,6 +66,8 @@ export class AuthenticationController {
     description: 'User found',
   })
   @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Информация о пользователе' })
+  @ApiBearerAuth('JWT-auth')
   @Get(':id')
   public async show(@Param('id', MongoidValidationPipe) id: string) {
     const existUser = await this.authService.getUser(id);

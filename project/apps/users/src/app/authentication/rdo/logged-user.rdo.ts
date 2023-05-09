@@ -19,7 +19,8 @@ export class LoggedUserRdo {
 
   @ApiProperty({
     description: 'Access token',
-    example: 'user@user.local',
+    example:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDU2OGI3OTEyOTU1ZGI0OGViMGY5ZDciLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJTbWl0aCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgzNjQ5MDU0LCJleHAiOjE2ODM2NDk2NTR9.AxUa05Zkb-je2NSBe9W3MpzvNH-K3jFdEVHC-RTMdy0',
   })
   @Expose()
   public accessToken: string;
