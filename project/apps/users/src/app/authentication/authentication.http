@@ -7,8 +7,7 @@
 @contentType = application/json
 @userId = 64568b7912955db48eb0f9d7
 
-@token = eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtla3NAb3Zlcmxvb2submV0IiwiaWQiOiI2NDQzODM3ZWZjZDkzYWNhY2ZkZTMxYWMiLCJpYXQiOjE2ODI1ODA2NDMsImV4cCI6MTY4Mjc1MzQ0M30.cI6T9c_PVfxOA_3JpGh1OeAEYEsrE1xCJlVMZCzIBMQ
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDU2OGI3OTEyOTU1ZGI0OGViMGY5ZDciLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJmaXJzdE5hbWUiOiJLZWtzIiwibGFzdE5hbWUiOiJTbWl0aCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgzNjQ5MDU0LCJleHAiOjE2ODM2NDk2NTR9.AxUa05Zkb-je2NSBe9W3MpzvNH-K3jFdEVHC-RTMdy0
 # Create a new user
 POST {{host}}/{{prefix}}/{{parentPath}}/register HTTP/1.1
 Content-Type: {{contentType}}
@@ -25,7 +24,7 @@ Content-Type: {{contentType}}
 
 # Get user by ID
 GET {{host}}/{{prefix}}/{{parentPath}}/{{userId}} HTTP/1.1
-
+Authorization: Bearer {{token}}
 ###
 
 # Login user by email and password
