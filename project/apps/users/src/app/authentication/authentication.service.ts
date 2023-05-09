@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UserRole } from '@project/shared/shared-types';
+import { TokenPayload, UserRole, User } from '@project/shared/shared-types';
 import dayjs from 'dayjs';
 import {
   AUTH_USER_EXISTS,
@@ -15,10 +15,14 @@ import {
 import { BlogUserEntity } from '../blog-user/blog-user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { BlogUserRepository } from '../blog-user/blog-user.repository';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private readonly blogUserRepository: BlogUserRepository) {}
+  constructor(
+    private readonly blogUserRepository: BlogUserRepository,
+    private readonly jwtService: JwtService
+  ) {}
 
   public async register(dto: CreateUserDto) {
     const { email, firstName, lastName, password, dateBirth } = dto;
@@ -60,5 +64,25 @@ export class AuthenticationService {
 
   public async getUser(id: string) {
     return this.blogUserRepository.findById(id);
+  }
+
+  public async createUserToken({
+    _id,
+    email,
+    firstName,
+    lastName,
+    role,
+  }: User) {
+    const payload: TokenPayload = {
+      sub: _id,
+      email,
+      firstName,
+      lastName,
+      role,
+    };
+
+    return {
+      accessToken: await this.jwtService.sign(payload),
+    };
   }
 }
