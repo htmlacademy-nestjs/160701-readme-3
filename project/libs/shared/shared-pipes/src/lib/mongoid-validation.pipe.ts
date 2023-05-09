@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 
-const BAD_MONGOID_ERROR = 'Bad intity ID';
+const BAD_MONGOID_ERROR = 'Bad entity ID';
 
 @Injectable()
 export class MongoidValidationPipe implements PipeTransform {
