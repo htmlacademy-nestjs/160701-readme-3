@@ -14,8 +14,8 @@ POST {{host}}/{{prefix}}/{{parentPath}} HTTP/1.1
 Content-Type: {{contentType}}
 
 {
-  "title": "Hello world!",
-  "description": "Текст анонса",
+  "title": "Hello world! 22222",
+  "description": "Текст анонса 2222",
   "content": "Расширенный текст публикации",
   "userId": "13",
   "categories": [1]
@@ -37,6 +37,11 @@ GET {{host}}/{{prefix}}/{{parentPath}}/1 HTTP/1.1
 GET {{host}}/{{prefix}}/{{parentPath}} HTTP/1.1
 
 ###
+# Get all posts and filtres
+GET {{host}}/{{prefix}}/{{parentPath}}?sortDirection=asc&categories=1&limit=1&page=1 HTTP/1.1
+
+###
+
 
 PATCH {{host}}/{{prefix}}/{{parentPath}}/1 HTTP/1.1
 Content-Type:  {{contentType}}
@@ -46,3 +51,4 @@ Content-Type:  {{contentType}}
 }
 
 ###
+

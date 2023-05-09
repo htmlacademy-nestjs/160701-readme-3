@@ -5,6 +5,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { Post } from '@project/shared/shared-types';
 import { BlogPostEntity } from './blog-post.entity';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { PostQuery } from './query/post.query';
 
 @Injectable()
 export class BlogPostService {
@@ -29,8 +30,8 @@ export class BlogPostService {
     return this.blogPostRepository.findById(id);
   }
 
-  public async getPosts(): Promise<Post[]> {
-    return this.blogPostRepository.find();
+  public async getPosts(query: PostQuery): Promise<Post[]> {
+    return this.blogPostRepository.find(query);
   }
 
   public async updatePost(_id: number, _dto: UpdatePostDto): Promise<Post> {

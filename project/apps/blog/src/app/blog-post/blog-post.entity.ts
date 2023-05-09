@@ -33,8 +33,8 @@ export class BlogPostEntity implements Entity<BlogPostEntity>, Post {
   public toObject(): BlogPostEntity {
     return {
       ...this,
-      categories: this.categories.map(({ categoryId }) => ({ categoryId })),
-      comments: this.categories.map(({ categoryId }) => ({ categoryId })),
+      categories: [...this.categories],
+      comments: [...this.comments],
     };
   }
 }

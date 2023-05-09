@@ -4,7 +4,7 @@ import { Category } from '@project/shared/shared-types';
 export class BlogCategoryEntity
   implements Entity<BlogCategoryEntity>, Category
 {
-  public id?: number;
+  public categoryId?: number;
   public title: string;
 
   constructor(category: Category) {
@@ -13,7 +13,7 @@ export class BlogCategoryEntity
 
   public fillEntity(entity: Category) {
     this.title = entity.title;
-    this.id = entity.categoryId;
+    this.categoryId = entity.categoryId;
   }
 
   public toObject(): BlogCategoryEntity {
