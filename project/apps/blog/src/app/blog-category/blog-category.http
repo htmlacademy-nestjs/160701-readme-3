@@ -1,0 +1,46 @@
+# Пользователи
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@prefix = api
+@parentPath = categories
+@contentType = application/json
+@userId = 64568b7912955db48eb0f9d7
+@token = eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imtla3NAb3Zlcmxvb2submV0IiwiaWQiOiI2NDQzODM3ZWZjZDkzYWNhY2ZkZTMxYWMiLCJpYXQiOjE2ODI1ODA2NDMsImV4cCI6MTY4Mjc1MzQ0M30.cI6T9c_PVfxOA_3JpGh1OeAEYEsrE1xCJlVMZCzIBMQ
+
+
+###
+
+# Create a new category
+POST {{host}}/{{prefix}}/{{parentPath}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "title": "Автомобили"
+}
+
+###
+
+# Delete category by id
+DELETE {{host}}/{{prefix}}/{{parentPath}}/3 HTTP/1.1
+
+###
+
+# Get category by id
+GET {{host}}/{{prefix}}/{{parentPath}}/3 HTTP/1.1
+
+###
+
+# Get all categories
+GET {{host}}/{{prefix}}/{{parentPath}} HTTP/1.1
+
+###
+
+# Update the category by id
+PATCH {{host}}/{{prefix}}/{{parentPath}}/1 HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+  "title": "Другое имя"
+}
+###

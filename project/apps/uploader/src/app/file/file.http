@@ -1,0 +1,30 @@
+# Пользователи
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@prefix = api
+@parentPath = files
+@contentType = application/json
+@fileId = 64591e078a7c94fc4822636e
+
+
+
+
+# Upload some file
+POST {{host}}/{{prefix}}/{{parentPath}}/upload HTTP/1.1
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="file1.http"
+
+< ./file.http
+--boundary--
+###
+
+
+###
+
+# Get file by ID
+GET {{host}}/{{prefix}}/{{parentPath}}/{{fileId}} HTTP/1.1
+
+###
