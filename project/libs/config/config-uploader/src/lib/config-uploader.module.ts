@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import uploaderConfig from './uploader.config';
+import uploaderConfig from './config/uploader.config';
 
 const ENV_FILE_PATH = 'apps/uploader/uploader.env';
 
