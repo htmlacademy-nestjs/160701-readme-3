@@ -34,7 +34,13 @@ export class BlogPostService {
     return this.blogPostRepository.find(query);
   }
 
-  public async updatePost(_id: number, _dto: UpdatePostDto): Promise<Post> {
-    throw new Error('Not implemented...');
+  public async updatePost(id: number, dto: UpdatePostDto): Promise<Post> {
+    const postEntity = new BlogPostEntity({
+      ...dto,
+      categories: [],
+      comments: [],
+      userId: '13',
+    });
+    return this.blogPostRepository.update(id, postEntity);
   }
 }

@@ -1,10 +1,5 @@
 import { Entity } from '@project/util/util-types';
-import {
-  Post,
-  Category,
-  Comment,
-  PostType,
-} from '@project/shared/shared-types';
+import { Post, Category, Comment } from '@project/shared/shared-types';
 
 export class BlogPostEntity implements Entity<BlogPostEntity>, Post {
   public id: number;
@@ -14,7 +9,6 @@ export class BlogPostEntity implements Entity<BlogPostEntity>, Post {
   public userId: string;
   public comments: Comment[];
   public categories: Category[];
-  // public type: PostType;
 
   constructor(post: Post) {
     this.fillEntity(post);
@@ -27,7 +21,6 @@ export class BlogPostEntity implements Entity<BlogPostEntity>, Post {
     this.userId = userId;
     this.comments = [];
     this.categories = [...categories];
-    // this.type = type;
   }
 
   public toObject(): BlogPostEntity {
