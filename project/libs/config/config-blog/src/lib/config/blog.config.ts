@@ -10,8 +10,8 @@ export interface BlogConfig {
 
 export default registerAs('application', (): BlogConfig => {
   const config: BlogConfig = {
-    environment: process.env['NODE_ENV'] || 'development',
-    port: parseInt(process.env['PORT'] || DEFAULT_PORT.toString(), 10),
+    environment: process.env.NODE_ENV,
+    port: parseInt(process.env.PORT || DEFAULT_PORT.toString(), 10),
   };
 
   const validationSchema = Joi.object<BlogConfig>({
