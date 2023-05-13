@@ -11,7 +11,9 @@ const BAD_MONGOID_ERROR = 'Bad entity ID';
 @Injectable()
 export class MongoidValidationPipe implements PipeTransform {
   transform(value: string, { type }: ArgumentMetadata) {
-    if (type !== 'param') {
+    const paramType = 'param';
+
+    if (type !== paramType) {
       throw new Error('This pipe must used only with params!');
     }
 

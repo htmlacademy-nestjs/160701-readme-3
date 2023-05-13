@@ -21,9 +21,7 @@ export class BlogPostRepository
           connect: [],
         },
         categories: {
-          connect: entityData.categories.map(({ categoryId }) => ({
-            categoryId,
-          })),
+          connect: entityData.categories,
         },
       },
       include: {
@@ -76,7 +74,26 @@ export class BlogPostRepository
     });
   }
 
-  public update(_id: number, _item: BlogPostEntity): Promise<Post> {
-    return Promise.resolve(undefined);
+  public update(postId: number, item: BlogPostEntity): Promise<Post> {
+    const entityData = item.toObject();
+
+    return this.prisma.post.update({
+      where: {
+        postId,
+      },
+      data: {
+        ...entityData,
+        comments: {
+          connect: [],
+        },
+        categories: {
+          connect: entityData.categories,
+        },
+      },
+      include: {
+        comments: true,
+        categories: true,
+      },
+    });
   }
 }

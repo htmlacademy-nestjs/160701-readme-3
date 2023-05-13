@@ -1,7 +1,7 @@
 import { registerAs } from '@nestjs/config';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import { JwtEnvironment } from '../jwt-environmets';
+import { JwtEnvironment } from '../environments/jwt-environmets';
 
 export interface JWTConfig {
   accessTokenSecret: string;
